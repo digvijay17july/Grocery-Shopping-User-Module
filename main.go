@@ -7,14 +7,16 @@ import (
 	"os"
 )
 func main() {
-	fmt.Print("Starting User Module.... ")
+	fmt.Println("Starting User Module.... ")
 	config := api.GetConfig()
 
-	fmt.Print("Configuration Values :" +config.DB.Host)
+	fmt.Println("Configuration Values :" +config.DB.Host)
 	app := &api.App{}
 	app.Initialize(config)
-	fmt.Print("Port No. is :"+os.Getenv("PORT"))
-	app.Run(":3000")
 
-	fmt.Print("Started User Module.... ")
+	port := os.Getenv("PORT")
+	fmt.Println("Port No. is :"+port)
+	app.Run(port)
+
+	fmt.Println("Started User Module.... ")
 }
