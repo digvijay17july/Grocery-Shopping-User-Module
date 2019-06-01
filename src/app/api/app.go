@@ -1,8 +1,8 @@
 package api
 
 import (
-	"Grocery-Shopping/src/app/handler"
-	"Grocery-Shopping/src/app/model"
+	"Grocery-Shopping-User-Module/src/app/handler"
+	"Grocery-Shopping-User-Module/src/app/model"
 	"fmt"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
@@ -30,17 +30,24 @@ func (a *App) Initialize(config *Config) {
 	if err != nil {
 		log.Fatal("Could not connect database %s",err.Error())
 	}
-	a.DB = model.DBMigrate(db)
+	a.DB = DBMigrate(db)
 	a.Router = mux.NewRouter()
 	a.setRouters()
 
 }
-
+// DBMigrate will create and migrate the tables, and then make the some relationships if necessary
+func DBMigrate(db *gorm.DB) *gorm.DB {
+	db.AutoMigrate(&model.User{})
+	db.AutoMigrate(&model.MobileNumber{})
+	db.AutoMigrate(&model.Address{})
+	return db
+}
 func (a *App) setRouters(){
 	fmt.Println("initializing request")
 	a.Get("/", a.init)
-	a.Get("/user", a.GetUsers)
+	a.Get("/user/{id}", a.GetUser)
 	a.Post("/user", a.CreateUser)
+	a.Get("/users", a.GetUsers)
 }
 
 // Wrap the router for GET method
@@ -58,6 +65,10 @@ func (a *App) CreateUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *App) GetUsers(w http.ResponseWriter, r *http.Request) {
+	handler.GetUsers(a.DB, w, r)
+}
+
+func (a *App) GetUser(w http.ResponseWriter, r *http.Request) {
 	handler.GetUser(a.DB, w, r)
 }
 

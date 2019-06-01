@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Grocery-Shopping/src/app/api"
+	"Grocery-Shopping-User-Module/src/app/api"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	)
 func main() {
