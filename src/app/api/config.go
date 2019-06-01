@@ -1,5 +1,7 @@
 package api
 
+import "os"
+
 type Config struct {
 	DB *DBConfig
 }
@@ -9,7 +11,7 @@ type DBConfig struct {
 	Password string
 	Name     string
 	Charset  string
-	PortNo   int
+	PortNo   string
 	Host     string
 }
 
@@ -17,12 +19,12 @@ func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
 			Dialect:  "postgres",
-			Username: "cfwldagsmukpvm",
-			Password: "f5ea03edbf45c3ec346bb784c5b4e54435b1cc38615493d48684e485d8b00d18",
-			Name:     "d1e82sinabvrsv",
-			Host:     "ec2-54-225-72-238.compute-1.amazonaws.com",
+			Username: os.Getenv("DATABASE_USERNAME"),
+			Password: os.Getenv("DATABASE_PASSWORD"),
+			Name:     os.Getenv("DATABASE_SCHEMA"),
+			Host:    os.Getenv("DATABASE_HOST"),
 			Charset:  "utf8",
-			PortNo:   5432,
+			PortNo:   os.Getenv("DATABASE_PORT"),
 		},
 	}
 }
