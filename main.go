@@ -16,7 +16,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	fmt.Println("Port No. is :"+port)
-	app.Run(port)
+	app.Run(":"+port)
 
 	fmt.Println("Started User Module.... ")
 }
