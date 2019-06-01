@@ -1,5 +1,6 @@
 package api
 
+import "os"
 
 type Config struct {
 	DB *DBConfig
@@ -18,10 +19,10 @@ func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
 			Dialect:  "postgres",
-			Username: "postgres",
-			Password: "root",
-			Name:     "testDb",
-			Host:     "localhost",
+			Username: "cfwldagsmukpvm",
+			Password: "f5ea03edbf45c3ec346bb784c5b4e54435b1cc38615493d48684e485d8b00d18",
+			Name:     "d1e82sinabvrsv",
+			Host:     os.Getenv("DATABASE_URL"),
 			Charset:  "utf8",
 			PortNo:   5432,
 		},
