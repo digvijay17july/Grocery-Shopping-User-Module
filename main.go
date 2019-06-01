@@ -14,7 +14,7 @@ func main() {
 	app := &api.App{}
 	app.Initialize(config)
 	fmt.Print("Port No. is :"+os.Getenv("PORT"))
-	app.Run(os.Getenv("PORT"))
+	app.Run(":3000")
 
 	fmt.Print("Started User Module.... ")
 }
