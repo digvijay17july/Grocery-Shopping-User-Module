@@ -1,7 +1,5 @@
 package api
 
-import "os"
-
 type Config struct {
 	DB *DBConfig
 }
@@ -22,7 +20,7 @@ func GetConfig() *Config {
 			Username: "cfwldagsmukpvm",
 			Password: "f5ea03edbf45c3ec346bb784c5b4e54435b1cc38615493d48684e485d8b00d18",
 			Name:     "d1e82sinabvrsv",
-			Host:     os.Getenv("DATABASE_URL"),
+			Host:     "ec2-54-225-72-238.compute-1.amazonaws.com",
 			Charset:  "utf8",
 			PortNo:   5432,
 		},
