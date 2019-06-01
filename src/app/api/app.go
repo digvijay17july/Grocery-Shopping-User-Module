@@ -78,5 +78,5 @@ func (a *App) Run(host string) {
 }
 
 func (a *App)init(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w, "Hello")
+	fmt.Fprintf(w, "Hello This is User Module")
 }

@@ -10,7 +10,7 @@ func main() {
 	fmt.Println("Starting User Module.... ")
 	config := api.GetConfig()
 
-	fmt.Println("Configuration Values :" +config.DB.Host)
+	fmt.Println("Configuration Values :" +os.Getenv(os.Getenv("DATABASE_URL"))+" : "+ os.Getenv("DATABASE_HOST")+" :"+os.Getenv("DATABASE_USERNAME")+" : "+os.Getenv("DATABASE_PASSWORD"))
 	app := &api.App{}
 	app.Initialize(config)
 
