@@ -14,11 +14,11 @@ import (
 )
 
 func GetUsers(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
-	var result = authenticate(w, r)
-	if result!=true{
-		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
-		return
-	}
+// 	var result = authenticate(w, r)
+// 	if result!=true{
+// 		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
+// 		return
+// 	}
  users:=[] model.User{}
  db.Set("gorm:auto_preload", true).Find(&users)
  respondJSON(w,http.StatusOK,users)
