@@ -49,11 +49,11 @@ func CreateUser(db *gorm.DB,w http.ResponseWriter, r *http.Request){
 	respondJSON(w, http.StatusCreated,jsonUser)
 }
 func GetUser(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
-	var result = authenticate(w, r)
-	if result!=true{
-		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
-		return
-	}
+// 	var result = authenticate(w, r)
+// 	if result!=true{
+// 		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
+// 		return
+// 	}
 	vars := mux.Vars(r)
 
 	id := vars["id"]
