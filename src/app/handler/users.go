@@ -69,7 +69,7 @@ func GetUser(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	respondJSON(w, http.StatusOK, user)
 }
 func getUserOr404(db *gorm.DB, id uint, w http.ResponseWriter, r *http.Request) *model.User {
-	authenticate(w,r)
+// 	authenticate(w,r)
 	user := model.User{}
 	if err := db.Set("gorm:auto_preload", true).First(&user,id).Error; err != nil {
 		respondError(w, http.StatusNotFound, err.Error())
