@@ -24,11 +24,11 @@ func GetUsers(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
  respondJSON(w,http.StatusOK,users)
 }
 func CreateUser(db *gorm.DB,w http.ResponseWriter, r *http.Request){
-	var result = authenticate(w, r)
-	if result!=true{
-		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
-		return
-	}
+// 	var result = authenticate(w, r)
+// 	if result!=true{
+// 		respondError(w, http.StatusUnauthorized,"Invalid User or Token Expired")
+// 		return
+// 	}
 	user:= model.User{}
 	decoder := json.NewDecoder(r.Body)
 	if err:=decoder.Decode(&user); err!=nil{
